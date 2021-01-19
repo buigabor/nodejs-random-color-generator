@@ -2,7 +2,18 @@ const randomColor = require('randomcolor');
 const chalk = require('chalk');
 
 if (process.argv[2] === 'ask') {
-	console.log('Please provide the name and the luminosity of the color');
+	console.log(
+		'Please provide the following parameters: box size(WWxHH), color name and luminosity',
+	);
+	console.log('Luminosity options: light, dark, bright');
+	console.log('I.e node index.js 32x10 red light');
+} else if (!process.argv[2]) {
+	const selectedColor = randomColor({
+		luminosity: 'random',
+		hue: 'random',
+	});
+
+	console.log(chalk.hex(`${selectedColor}`)(selectedColor));
 } else if (process.argv[2].includes('x')) {
 	const sizeParameters = process.argv[2];
 	const colorCode = process.argv[3];
