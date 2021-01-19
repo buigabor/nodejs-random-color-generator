@@ -34,7 +34,7 @@ node index.js
 
 If you do not provide any additional input, it will print a block with a random color and luminosity.
 
-<img src='./img/no_input.png' width="600">
+<img src='./img/no_input.png' width="350">
 
 ```
 node index.js red light
@@ -42,7 +42,7 @@ node index.js red light
 
 This will print a block with default sizes (31x9) and with the provided color and luminosity.
 
-<img src='./img/red_square.png' width="600">
+<img src='./img/red_square.png' width="350">
 
 ```
 node index.js 36x15 blue light
@@ -50,4 +50,4 @@ node index.js 36x15 blue light
 
 This will print a block with the size of 36x15 and a light blue color.
 
-<img src='./img/blue_square_with_sizes.png' width="600">
+<img src='./img/blue_square_with_sizes.png' width="350">
