@@ -7,14 +7,13 @@ if (process.argv[2] === 'ask') {
 	const sizeParameters = process.argv[2];
 	const colorCode = process.argv[3];
 	const luminosityCode = process.argv[4];
+	const width = sizeParameters.split('x')[0];
+	const height = sizeParameters.split('x')[1];
 
 	const selectedColor = randomColor({
 		luminosity: luminosityCode,
 		hue: colorCode,
 	});
-
-	const width = sizeParameters.split('x')[0];
-	const height = sizeParameters.split('x')[1];
 
 	printHashtagRect(width, height, selectedColor);
 } else {
