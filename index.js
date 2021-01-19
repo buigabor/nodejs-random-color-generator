@@ -1,19 +1,45 @@
 const randomColor = require('randomcolor');
 const chalk = require('chalk');
+const readline = require('readline');
 
 if (process.argv[2] === 'ask') {
+	const rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout,
+	});
+
 	console.log(
-		'Please provide the following parameters: box size(WWxHH), color name and luminosity',
+		'Please provide the following parameters: color name and luminosity',
 	);
+
+	rl.question('What is the name of the color? ', function (color) {
+		rl.question(
+			'What is the luminosity? (light, dark, bright) ',
+			function (luminosity) {
+				const selectedColor = randomColor({
+					luminosity,
+					hue: color,
+				});
+
+				printHashtagRect(31, 9, selectedColor);
+				rl.close();
+			},
+		);
+	});
+} else if (process.argv[2] === 'help') {
+	console.log(
+		'Please provide the following parameters: box size, color, luminosity',
+	);
+	console.log('Box size format: WWxHH (eg. 31x9)');
 	console.log('Luminosity options: light, dark, bright');
-	console.log('I.e node index.js 32x10 red light');
+	console.log('Code example: node index.js 40x11 red dark');
 } else if (!process.argv[2]) {
 	const selectedColor = randomColor({
 		luminosity: 'random',
 		hue: 'random',
 	});
 
-	console.log(chalk.hex(`${selectedColor}`)(selectedColor));
+	printHashtagRect(31, 9, selectedColor);
 } else if (process.argv[2].includes('x')) {
 	const sizeParameters = process.argv[2];
 	const colorCode = process.argv[3];
