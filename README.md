@@ -32,7 +32,7 @@ This will prompt you for the name and the luminosity of the color and print you 
 node index.js
 ```
 
-If you do not provide any additional input, it will print a block with a random color and luminosity.
+If you do not provide any additional input, it will print a block with default sizes (31x9) with a random color and luminosity.
 
 <img src='./img/no_input.png' width="350">
 
