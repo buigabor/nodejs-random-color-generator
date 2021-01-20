@@ -48,6 +48,6 @@ This will print a block with default sizes (31x9) and with the provided color an
 node index.js 36x15 blue light
 ```
 
-This will print a block with the size of 36x15 and a light blue color.
+This will print a block with the size of 36x15 in a light blue color.
 
 <img src='./img/blue_square_with_sizes.png' width="350">
