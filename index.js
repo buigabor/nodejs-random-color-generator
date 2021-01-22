@@ -2,6 +2,55 @@ const randomColor = require('randomcolor');
 const chalk = require('chalk');
 const readline = require('readline');
 
+function repeatStr(string, times) {
+	let repeatedString = '';
+	while (times > 0) {
+		repeatedString += string;
+		times--;
+	}
+	return repeatedString;
+}
+
+function printHashtagRect(width, height, color) {
+	const lengthOfHexCode = 7;
+	const widthOfEmptyBox = Math.floor(width * 0.66);
+
+	if (widthOfEmptyBox <= 9) {
+		console.log('Please provide a width greater than 13');
+	}
+
+	let row = '';
+	const widthOfEdge = Math.floor((width - widthOfEmptyBox) / 2);
+
+	for (let i = 0; i < height; i++) {
+		if (i < Math.floor(height / 2) - 1 || i > Math.floor(height / 2) + 1) {
+			row = repeatStr('#', width);
+		} else if (i === Math.floor(height / 2)) {
+			row =
+				repeatStr('#', widthOfEdge) +
+				repeatStr(' ', Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2)) +
+				color +
+				repeatStr(' ', Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2));
+
+			if (width % 2 === 0) {
+				row += repeatStr('#', widthOfEdge + 1);
+			} else {
+				row += repeatStr('#', widthOfEdge);
+			}
+		} else {
+			row = repeatStr('#', widthOfEdge) + repeatStr(' ', widthOfEmptyBox);
+			if (width % 2 === 0) {
+				row += repeatStr('#', widthOfEdge + 1);
+			} else {
+				row += repeatStr('#', widthOfEdge);
+			}
+		}
+
+		console.log(chalk.hex(`${color}`)(row));
+		row = '';
+	}
+}
+
 if (process.argv[2] === 'ask') {
 	const rl = readline.createInterface({
 		input: process.stdin,
@@ -63,49 +112,4 @@ if (process.argv[2] === 'ask') {
 	});
 
 	printHashtagRect(31, 9, selectedColor);
-}
-
-function printHashtagRect(width, height, color) {
-	let lengthOfHexCode = 7;
-	let widthOfEmptyBox = 23;
-
-	let row = '';
-	let widthOfEdge = Math.floor((width - widthOfEmptyBox) / 2);
-
-	for (let i = 0; i < height; i++) {
-		if (i < Math.floor(height / 2) - 1 || i > Math.floor(height / 2) + 1) {
-			row = repeatStr('#', width);
-		} else if (i === Math.floor(height / 2)) {
-			row =
-				repeatStr('#', widthOfEdge) +
-				repeatStr(' ', Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2)) +
-				color +
-				repeatStr(' ', Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2));
-
-			if (width % 2 === 0) {
-				row += repeatStr('#', widthOfEdge + 1);
-			} else {
-				row += repeatStr('#', widthOfEdge);
-			}
-		} else {
-			row = repeatStr('#', widthOfEdge) + repeatStr(' ', widthOfEmptyBox);
-			if (width % 2 === 0) {
-				row += repeatStr('#', widthOfEdge + 1);
-			} else {
-				row += repeatStr('#', widthOfEdge);
-			}
-		}
-
-		console.log(chalk.hex(`${color}`)(row));
-		row = '';
-	}
-}
-
-function repeatStr(string, times) {
-	let repeatedString = '';
-	while (times > 0) {
-		repeatedString += string;
-		times--;
-	}
-	return repeatedString;
 }
