@@ -13,11 +13,7 @@ function repeatStr(string, times) {
 
 function printHashtagRect(width, height, color) {
 	const lengthOfHexCode = 7;
-	const widthOfEmptyBox = Math.floor(width * 0.66);
-
-	if (widthOfEmptyBox <= 9) {
-		return console.log('Please provide a width greater than 13');
-	}
+	const widthOfEmptyBox = 23;
 
 	let row = '';
 	const widthOfEdge = Math.floor((width - widthOfEmptyBox) / 2);
@@ -38,7 +34,13 @@ function printHashtagRect(width, height, color) {
 				row += repeatStr('#', widthOfEdge);
 			}
 		} else {
-			row = repeatStr('#', widthOfEdge) + repeatStr(' ', widthOfEmptyBox);
+			row +=
+				repeatStr('#', widthOfEdge) +
+				repeatStr(
+					' ',
+					Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2) + 7,
+				) +
+				repeatStr(' ', Math.floor((widthOfEmptyBox - lengthOfHexCode) / 2));
 			if (width % 2 === 0) {
 				row += repeatStr('#', widthOfEdge + 1);
 			} else {
