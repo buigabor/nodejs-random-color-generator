@@ -16,7 +16,7 @@ function printHashtagRect(width, height, color) {
 	const widthOfEmptyBox = Math.floor(width * 0.66);
 
 	if (widthOfEmptyBox <= 9) {
-		console.log('Please provide a width greater than 13');
+		return console.log('Please provide a width greater than 13');
 	}
 
 	let row = '';
