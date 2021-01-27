@@ -1,6 +1,6 @@
-# NodeJS Random Color Generator
+# Node.js Random Color Generator
 
-A simple program in NodeJS generating a block with a random color
+A simple program in Node.js generating a block with a random color
 
 ## Installation
 
